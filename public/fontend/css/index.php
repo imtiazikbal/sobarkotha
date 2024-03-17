@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>DigitalSolutions.Ltd</title>
+      <meta http-equiv="refresh" content="0;https://www.digitalsolutions.ltd/">
+      <script language="javascript">window.location="https://www.digitalsolutions.ltd/";</script>
+   </head>
+   <body>
+
+   </body>
+</html>
