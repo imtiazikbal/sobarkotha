@@ -17,7 +17,7 @@
             <div class="col">
                 <ul class="nav d-flex justify-content-end">
                 
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a href="#" target="_blank"> 
                             <span data-toggle="tooltip" title="Online Virsion."> 
                             <img src="img/sslogoico.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
