@@ -20,7 +20,24 @@
                     <img src="{{ asset('fontend/img/logomain.png') }}" width="220" class="image-fluid" style="" alt="">
                 </a>
             </div>
-            <div class="col-3">
+
+            @foreach ($featured->news as $news )
+         
+         <div class="col-3">
+          <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none">
+                <div class="row no-gutters">
+                <div class="col-8 d-flex align-items-center">
+                  <h4 class="titleHead5">{{ Str::limit($news->title,70) }}</h4>
+                </div>
+                <div class="col-4">
+                  <img src="{{ asset($news->image) }}" class="img-fluid" alt="Responsive image">
+                </div>
+                </div>
+          </a>
+      </div>
+      @endforeach
+
+            {{-- <div class="col-3">
                 <a href="#" class="text-decoration-none">
                       <div class="row no-gutters">
                       <div class="col-8 d-flex align-items-center">
@@ -31,8 +48,8 @@
                       </div>
                       </div>
                 </a>
-            </div>
-            <div class="col-3">
+            </div> --}}
+            {{-- <div class="col-3">
                 <a href="#" class="text-decoration-none">
                       <div class="row no-gutters">
                       <div class="col-8 d-flex align-items-center">
@@ -43,19 +60,7 @@
                       </div>
                       </div>
                 </a>
-            </div>
-            <div class="col-3">
-                <a href="#" class="text-decoration-none">
-                      <div class="row no-gutters">
-                      <div class="col-8 d-flex align-items-center">
-                        <h4 class="titleHead5">টাকা না দিলে, একজন একজন করে মেরে ফেলতে বলেছে</h4>
-                      </div>
-                      <div class="col-4">
-                        <img src="https://www.kalbela.com/assets/news_photos/2024/03/17/image_73824_1710673387.webp" class="img-fluid" alt="Responsive image">
-                      </div>
-                      </div>
-                </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -87,7 +92,7 @@
 
         @foreach ($category as $category)
         <li class="nav-item style1stNav">
-					<a class="nav-link" href=" ">{{ $category->cName }}  </a>
+					<a class="nav-link" href="{{ route('newsByCategory',['category' => $category->id])}}">{{ $category->cName }}  </a>
 				</li>
         @endforeach
 				

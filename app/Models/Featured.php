@@ -9,5 +9,8 @@ class Featured extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function news(){
+        return $this->hasMany(News::class);
+    }
 
 }

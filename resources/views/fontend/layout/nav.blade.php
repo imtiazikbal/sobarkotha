@@ -3,7 +3,7 @@
         <div class="form-row">
             <div class="col pr-0">
         
-                <div class="" style="">ঢাকা
+                <div class="" style="">ঢাকা,{{ $date }}
                 
 
                 </div>

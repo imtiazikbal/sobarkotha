@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -10,7 +11,8 @@ class DashboardController extends Controller
         if(auth()->user()->role ==='user'){
             return view('welcome');
         }else{
-            return view('dashboard');
+            $jobsCount = News::where('status','published')->count();
+            return view('dashboard',compact('jobsCount'));
         }
        
     }

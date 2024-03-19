@@ -30,3 +30,11 @@
   .colored-toast .swal2-html-container {
     color: white;
   }
+
+  .M-section h5 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .s-2-text h2{
+    padding: 0px 5px 5px 5px;
+  }

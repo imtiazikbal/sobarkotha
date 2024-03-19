@@ -2,7 +2,8 @@
 @section('content')
 
 
-
+@include('fontend.component.leadnews')
 
 
 @endsection
+

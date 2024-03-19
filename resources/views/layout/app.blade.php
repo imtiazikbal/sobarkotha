@@ -12,7 +12,7 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
    
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/assets/images/favicon.ico">
 
     <!-- glightbox css -->
     <link rel="stylesheet" href=" {{ asset('assets') }}/assets/libs/glightbox/css/glightbox.min.css">
@@ -21,6 +21,7 @@
     <script src=" {{ asset('assets') }}/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
     <link href=" {{ asset('assets') }}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <!-- Icons Css -->
     <link href=" {{ asset('assets') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -87,7 +88,7 @@
         <!--end offcanvas-header-->
         <div class="offcanvas-body profile-offcanvas p-0">
             <div class="team-cover">
-                <img src="assets/images/small/img-9.jpg" alt="" class="img-fluid" />
+                <img src="{{ asset('assets') }}/assets/images/small/img-9.jpg" alt="" class="img-fluid" />
             </div>
             <div class="p-1 pb-4 pt-0">
                 <div class="team-settings">
@@ -121,7 +122,7 @@
                 <!--end col-->
             </div>
             <div class="p-3 text-center">
-                <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-lg img-thumbnail rounded-circle mx-auto profile-img">
+                <img src="{{ asset('assets') }}/assets/images/users/avatar-2.jpg" alt="" class="avatar-lg img-thumbnail rounded-circle mx-auto profile-img">
                 <div class="mt-3">
                     <h5 class="fs-16 mb-1"><a href="javascript:void(0);" class="link-primary username">Lisa Parker</a></h5>
                     <p class="text-muted"><i class="ri-checkbox-blank-circle-fill me-1 align-bottom text-success"></i>Online</p>
@@ -356,6 +357,10 @@
     <!-- fgEmojiPicker js -->
     <script src=" {{ asset('assets') }}/assets/libs/fg-emoji-picker/fgEmojiPicker.js"></script>
 
+    <!-- Summer Note -->
+    <script src=" {{ asset('assets') }}/summernote\js\summernote.min.js"></script>
+    <script src=" {{ asset('assets') }}/summernote\js\summernote-bs4.min.js"></script>
+    <script src=" {{ asset('assets') }}/summernote\js\summernote-lite.js"></script>
     <!-- chat init js -->
     <script src=" {{ asset('assets') }}/assets/js/pages/chat.init.js"></script>
 

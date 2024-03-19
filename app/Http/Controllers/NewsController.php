@@ -3,7 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Topic;
+use App\Models\Upazila;
+use App\Models\Category;
+use App\Models\District;
+use App\Models\Division;
+use App\Models\Featured;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class NewsController extends Controller
 {
@@ -13,17 +21,30 @@ class NewsController extends Controller
     public function index()
     {
 
-        $news = News::with('category','division','district','upazila')->where('status','published')->get();
-     //   return $news;
+        if(auth()->user()->role == 'admin'){
+            $news = News::with('category','division','district','upazila','user')->where('status','published')->get();
+        }else{
+            $news = News::with('category','division','district','upazila','user')->where('status','published')->where('user_id',auth()->user()->id)->get();
+            
+        }
+     // return $news;
        //return "ok";
-       return view('backend.news.index',compact('news'));
+      return view('backend.news.index',compact('news'));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-       return view('backend.news.create');
+        $category = Category::all();
+        $subcategory = SubCategory::all();
+        $division = Division::all();
+        $district = District::all();
+        $upazila = Upazila::all();
+        $featured = Featured::all();
+        $topic = Topic::all();
+        
+       return view('backend.news.create',compact('category','subcategory','division','district','upazila','featured','topic'));
     }
 
     /**
@@ -31,18 +52,12 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'title' => 'required',
-            'nBody' => 'required',
-            'nCaption' => 'required',
-            'nTag' => 'required',
-          
-
-        ]);
+       // dd($request->all());
+    
         $img = $request->file('image');
         $t = time();
         $file_name = $img->getClientOriginalName();
-        $img_name = "slider-{$t}-{$file_name}";
+        $img_name = "news-{$t}-{$file_name}";
         $img_url = "uploads/news/{$img_name}";
         // Upload File
         $img->move(public_path('uploads/news'), $img_name);
@@ -54,19 +69,22 @@ class NewsController extends Controller
             'nTag'=>json_encode($request->nTag),
             'image'=>$img_url,
             'topic_id'=>$request->topic_id,
-            'user_id'=>$request->user_id,
+            'user_id'=>auth()->user()->id,
             'category_id'=>$request->category_id,
             'sub_category_id'=>$request->sub_category_id,
             'featured_id'=>$request->featured_id,
             'division_id'=>$request->division_id,
             'district_id'=>$request->district_id,
             'upazila_id'=>$request->featured_id,
+            'status'=>$request->status,
+            'scroll'=>$request->scroll
         ]);
-        return response()->json([
-            'success' => true,
-            'message' => 'News created successfully',
-            'data'=> $data
-        ]);
+        return redirect('/admin/news')->with('success', 'News created successfully');
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'News created successfully',
+        //     'data'=> $data
+        // ]);
 
     }
 
@@ -97,8 +115,11 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(News $news,Request $request)
     {
-        //
+        File::delete($request->image_path);
+
+        $news->delete();
+        return redirect('/admin/news')->with('warning', 'News deleted successfully');
     }
 }

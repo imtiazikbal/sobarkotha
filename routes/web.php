@@ -32,7 +32,11 @@ Route::get('/clear', function () {
     Artisan::call('optimize:clear');
 });
 
-Route::get('/',[FontendController::class,'index']);
+
+
+Route::get('/lead',[FontendController::class,'lead']);
+
+Route::get('/',[FontendController::class,'index'])->name('home');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -112,6 +116,11 @@ Route::get('/admin/edit/news/{news}', [NewsController::class, 'edit']);
 Route::post('/admin/update/news/{news}', [NewsController::class, 'update']);
 Route::post('/admin/destroy/news/{news}', [NewsController::class, 'destroy']);
 
+// get news by category
+Route::get('/admin/get-news-by-category', [FontendController::class, 'getNewsByCategory'])->name('newsByCategory');
 
+
+// get news by title id
+Route::get('/admin/get-news-by-title', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
 
 require __DIR__.'/auth.php';

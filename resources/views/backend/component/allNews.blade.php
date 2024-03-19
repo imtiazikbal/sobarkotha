@@ -39,60 +39,59 @@
                   <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                       <thead>
                           <tr>
-                              <th scope="col" style="width: 10px;">
-                                  <div class="form-check">
-                                      <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
-                                  </div>
-                              </th>
-                              <th data-ordering="false">SR No.</th>
-                              <th data-ordering="false">ID</th>
-                              <th data-ordering="false">Purchase ID</th>
+                              
+                              <th data-ordering="false">News Image</th>
                               <th data-ordering="false">Title</th>
                               <th data-ordering="false">User</th>
-                              <th>Assigned To</th>
-                              <th>Created By</th>
-                              <th>Create Date</th>
+                              <th>Body</th>
+                              <th>Category</th>
+                              <th>Divison</th>
+                              <th>Published</th>
                               <th>Status</th>
-                              <th>Priority</th>
                               <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <th scope="row">
-                                  <div class="form-check">
-                                      <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                  </div>
-                              </th>
-                              <td>01</td>
-                              <td>VLZ-452</td>
-                              <td>VLZ1400087402</td>
-                              <td><a href="#!">Post launch reminder/ post list</a></td>
-                              <td>Joseph Parker</td>
-                              <td>Alexis Clarke</td>
-                              <td>Joseph Parker</td>
-                              <td>03 Oct, 2021</td>
-                              <td><span class="badge bg-info-subtle text-info">Re-open</span></td>
-                              <td><span class="badge bg-danger">High</span></td>
-                              <td>
-                                  <div class="dropdown d-inline-block">
-                                      <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                          <i class="ri-more-fill align-middle"></i>
-                                      </button>
-                                      <ul class="dropdown-menu dropdown-menu-end" style="">
-                                          <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                          <li><a href="{{ route('dashboard') }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                          @can('can_delete')
-                                          <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                          @endcan
-                                         
-                                      </ul>
-                                  </div>
-                              </td>
+                        @foreach ($news as $news) 
+                        <tr>
+                          <td>
+                            <img src="{{ asset($news->image) }}" alt="news image" width="50px">
+                          </td>
+                            <td>{{ Str::limit($news->title, 20) }}</td>
+                            <td>{{ $news->user->name }}</td>
+                            <td>{{ Str::limit($news->title, 70) }}</td>
+                            <td>{{ $news->category->cName }}</td>
+                            <td>{{ $news->division->div_name }}</td>
+                            <td>{{ $news->created_at->diffForHumans() }}</td>
+                            <td><span class="badge bg-info-subtle text-info">{{ $news->status }}</span></td>
+                            
+       
+                            <td>
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ri-more-fill align-middle"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" style="">
+                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                        <li><a href="{{url('/admin/edit/news/'.$news->id) }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                        @can('can_delete')
+                                        <li>
+                                            <form action="{{ url('admin/destroy/news/'.$news->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="image_path" value="{{ $news->image}}">
+                                                <button type="submit" class="dropdown-item remove-item-btn">
+                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
+                                                </button>
+
+                                            </form>
+                                      </li>
+                                        @endcan
+                                       
+                                    </ul>
+                                </div>
+                            </td>
+                          @endforeach
+                       
                           </tr>
                        
                       </tbody>
@@ -102,4 +101,49 @@
       </div>
   </div>
 
-  
+  @if (session()->has('success'))
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-right',
+        iconColor: 'white',
+        customClass: {
+            popup: 'colored-toast',
+        },
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+    })
+
+    ;
+    (async () => {
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session('success') }}',
+        })
+    })()
+</script>
+@endif  
+@if (session()->has('warning'))
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-right',
+        iconColor: 'white',
+        customClass: {
+            popup: 'colored-toast',
+        },
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+    })
+
+    ;
+    (async () => {
+        Toast.fire({
+            icon: 'warning',
+            title: '{{ session('warning') }}',
+        })
+    })()
+</script>
+@endif

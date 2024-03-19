@@ -24,5 +24,11 @@ class News extends Model
      public function upazila(){
         return $this->belongsTo(Upazila::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function featured(){
+        return $this->belongsTo(Featured::class);
+    }
 
 }
