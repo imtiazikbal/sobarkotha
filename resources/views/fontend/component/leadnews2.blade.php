@@ -8,7 +8,10 @@
                    <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
                    <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Fd927cfb6-71aa-41a1-afc6-b9e55cb709c9%2FO_kader.jpg?rect=19%2C0%2C701%2C467&auto=format%2Ccompress&fmt=webp&format=webp&w=100&dpr=1.0" alt=""></a>
                 </div>
-                <h6>ওবায়দুল কাদের। তিনি বলেন, ‘আমি বিষয়টি গণমাধ্যমে দেখেছি। এ সম্পর্কে আমার কিছু জানা ছিল না। এখন সাকিব আওয়ামী লীগের টিকিটে নির্বাচন করেছে, জয়লাভও করেছে।’</h6>
+                    <div>
+                        <h6>ওবায়দুল কাদের। তিনি বলেন, ‘আমি বিষয়টি গণমাধ্যমে দেখেছি। এ সম্পর্কে আমার কিছু জানা ছিল না। এখন সাকিব আওয়ামী লীগের টিকিটে নির্বাচন করেছে, জয়লাভও করেছে।’</h6>
+
+                    </div>
             </div>
 
             <div class="col-md-6">
@@ -30,12 +33,45 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-6"></div>
-                    <div class="col-6"></div>
+                    <div class="col-6"> 
+                        <div class="headNews d-flex">
+                            <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
+                                <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Fd927cfb6-71aa-41a1-afc6-b9e55cb709c9%2FO_kader.jpg?rect=19%2C0%2C701%2C467&auto=format%2Ccompress&fmt=webp&format=webp&w=100&dpr=1.0" alt=""></a>
+                         </div>
+                         <div>
+                             <h6>ওবায়দুল কাদের। তিনি বলেন, ‘আমি বিষয়টি গণমাধ্যমে দেখেছি। এ সম্পর্কে আমার কিছু জানা ছিল না। এখন সাকিব আওয়ামী লীগের টিকিটে নির্বাচন করেছে, জয়লাভও করেছে।’</h6>
+     
+                         </div>
+                    </div>
+                    <div class="col-6"> 
+                    <div class="headNews d-flex">
+                        <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
+                        <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Fd927cfb6-71aa-41a1-afc6-b9e55cb709c9%2FO_kader.jpg?rect=19%2C0%2C701%2C467&auto=format%2Ccompress&fmt=webp&format=webp&w=100&dpr=1.0" alt=""></a>
+                     </div>
+                        <div>
+                                <h6>ওবায়দুল কাদের। তিনি বলেন, ‘আমি বিষয়টি গণমাধ্যমে দেখেছি। এ সম্পর্কে আমার কিছু জানা ছিল না। এখন সাকিব আওয়ামী লীগের টিকিটে নির্বাচন করেছে, জয়লাভও করেছে।’</h6>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-6"></div>
-                    <div class="col-6"></div>
+                    <div class="col-4">
+                        <div class="mainSecond">
+                            <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Ff7773fa6-e459-4b97-9b5b-272272562769%2Faec1c02b-9700-497f-a044-0813bbad6368.jpeg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=200&dpr=1.0" alt=""></a>
+                            <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
+                         </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mainSecond">
+                            <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Ff7773fa6-e459-4b97-9b5b-272272562769%2Faec1c02b-9700-497f-a044-0813bbad6368.jpeg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=200&dpr=1.0" alt=""></a>
+                            <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
+                         </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mainSecond">
+                            <a href="#"><img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Ff7773fa6-e459-4b97-9b5b-272272562769%2Faec1c02b-9700-497f-a044-0813bbad6368.jpeg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=200&dpr=1.0" alt=""></a>
+                            <h5>সাকিব বিএনএমে যোগ দিয়েছিলেন কি না, জানি না: ওবায়দুল কাদের</h5>
+                         </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 bg-warning p-2"></div>
