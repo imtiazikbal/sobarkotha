@@ -67,8 +67,21 @@ class FontendController extends Controller
 
     }
     function getNewsByTitle(Request $request,News $news){
-        $news =  News::where('id',$request->news_id)->with('category','division','district')->first();
-        return $news;    
+      date_default_timezone_set('Asia/Dhaka');
+        $dateNew = date("h:i A - d F Y");
+        $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
+        // all category here
+        $category = Category::all();
+
+        // Nav bar featured news
+        $featured = Featured::where('featured','=','Main')->with('news',fn($q) => $q->where('status','published')->latest()->take(3))->first();
+        // main featured news 1
+      $news = Featured::where('featured','=','Main')->with('news',fn($q) => $q->where('status','published')->latest()->take(1))->first();
+     // main fetured news skip 1 take 2
+      $skip1Get2 = Featured::where('featured','=','Main')->with('news',fn($q) => $q->where('status','published')->latest()->skip(1)->take(2))->first();
+        $news =  News::where('id',$request->news_id)->with('category','division','district','user')->first();
+       return view('fontend.pages.details',compact('category','date','news','skip1Get2','featured'));
+     // return $news;
     }
 
 

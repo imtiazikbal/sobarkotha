@@ -8,7 +8,7 @@
               <!-- query start
               
               query start -->
-              @foreach ($news->news as $news )
+          @foreach ($news->news as $news )
 
               <div class="mb-3">
                 <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="card text-decoration-none border-0"> 
@@ -24,7 +24,7 @@
               <!--  query End -->
             </div>
             @endforeach
-      
+     
             <div class="col-sm-4 border-right mb-3">
               <div class="row">
                 @foreach ($skip1Get2->news as $news )
