@@ -6,7 +6,7 @@
 					<ol class="breadcrumb bg-light pb-1 pt-2 ">
 						<li class="breadcrumb-item"><a href=""><i class="fas fa-home text-dark"> </i></a></li>
 						<!--
-						
+		
 						-->
 						<li class="breadcrumb-item active" aria-current="page">{{ $news->category->cName }}</li>
 
@@ -56,7 +56,7 @@
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
 											</svg>
-										</span> {{ auth()->user()->name }}:
+										
 									</h5>
                                     
 
@@ -86,7 +86,7 @@
 							
 							-->
 								<h4>
-									{{-- <strong>page name বিভাগের অন্যান্য খবর</strong>  --}}
+								 <strong>বিভাগের অন্যান্য খবর</strong> 
 								</h4>
 							<!-- query Start 
 							</div>
@@ -98,11 +98,15 @@
 								
 								   query End 
 							-->
+
+							@foreach ($divisionNews as $news)
+								
+							@endforeach
 				                <div class="col-md-6 col-6 my-2">
 				                    <a href="" class="text-decoration-none"> 
-					                  <img src="" 
+					                  <img src="{{ asset($news->image) }}" 
 					                  class="img-fluid" alt="image here">
-					                  <h6 class="titleHead31 border-bottom"> news title</h6> 
+					                  <h6 class="titleHead31 border-bottom"> {{ $news->title }}</h6> 
 					                </a>
 				                </div>
 			                <!-- query End -->

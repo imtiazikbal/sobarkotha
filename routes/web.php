@@ -123,4 +123,8 @@ Route::get('/admin/get-news-by-category', [FontendController::class, 'getNewsByC
 // get news by title id
 Route::get('/admin/get-news-by-title', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
 
+
+//news by trending
+Route::get('/get-news-by-topic', [FontendController::class, 'newsByTopic'])->name('newsByTopic');
+
 require __DIR__.'/auth.php';
