@@ -104,6 +104,10 @@ Route::get('/admin/edit/topic/{topic}', [TopicController::class, 'edit']);
 Route::post('/admin/update/topic/{topic}', [TopicController::class, 'update']);
 Route::post('/admin/destroy/topic/{topic}', [TopicController::class, 'destroy']);
 
+//Featured Update news
+Route::get('/admin/leadNews', [FeaturedController::class, 'leadNews']);
+Route::get('/admin/leadNews/get', [FeaturedController::class, 'leadNewsUpdate'])->name('leadNewsUpdate');
+
 
 
 

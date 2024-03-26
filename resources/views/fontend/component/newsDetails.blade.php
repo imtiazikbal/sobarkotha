@@ -1,23 +1,20 @@
 
 	<!-- Breadcrumb Breadcrumb -->
 		<section class="bg-light">
-			<div class="container p-0">
+			<div class="container">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb bg-light pb-1 pt-2 ">
 						<li class="breadcrumb-item"><a href=""><i class="fas fa-home text-dark"> </i></a></li>
-						<!--
-		
-						-->
+					
 						<li class="breadcrumb-item active" aria-current="page">{{ $news->category->cName }}</li>
 
-						<!-- 
+						
 					</ol>
 				</nav>
 			</div>
 		</section>
-	
-	//details query start
--->
+
+
 <!-- Details aria Start -->
 	<section class="">
 		<div class="container">
@@ -33,11 +30,28 @@
 					<div class="row">
 						<div class="col">
 							<span class="hidden" class="sharethis-inline-share-buttons"></span>
-							<h2 class="">{{ $news->title }}</h2>
+							<h2 class=" font-weight-bold">{{ $news->title }}</h2>
 							<div class="row">
 								<div class="col">
 									<h6 class="pb-1" style="color: #999999;"> 
-										<span class="font-weight-bold"> Publish : {{ $news->created_at->diffForHumans() }} </span>.
+
+										@php
+										use App\Helper\Bengali;
+									
+										$date = $news->created_at;
+										$formattedDate = date('h:i A - d F Y', strtotime($date));
+										$time = Bengali::bn_date_time($formattedDate);
+										
+									@endphp
+									
+										 <span  style="color: black;"> প্রকাশ:
+											
+										@php
+											echo $time;
+										 @endphp 
+										 
+										</span>. 
+										
 									</h6>
 									<img src="{{ asset($news->image) }}" class="card-img-top rounded-0" 
 										title="news title" alt="{{ $news->nCaption }}">
@@ -72,7 +86,7 @@
 				<div class="col-md-3 col-12" style="margin-top:20px;">
 			
 					<!--Last News -->
-					<section class="mt-2">
+	<section class="mt-2">
 		    @include('fontend.component.popular')
 	</section>
 					<!--Last News -->
@@ -125,77 +139,5 @@
 		</div>
 	</section>
 
-	<!-- Details aria End 
 
-	-->
-
-<!-- Footer Section -->
-{{-- footer here --}}
-<!-- Footer -->
-
-	<style>
-		.cstomWidth {
-			width: 80%;
-		}
-
-
-		h2 {
-			font-weight: bold;
-			padding: 15px 0;
-
-		} @media (max-width: 768px) {
-			h2 { 
-				font-size: 24px;
-				padding: 10px 0;
-			 } 
-		}
-		
-		.detailsStyle p {
-			color: #444; 
-			text-align: justify;
-			font-size: 20px;
-			line-height: 1.5;
-			margin-bottom: 18px;
-		}  @media (max-width: 768px) {
-			.detailsStyle p { 
-				font-size: 20px;
-			}
-		}
-		
-		.detailsStyle h5 {
-			font-size: 22px;
-			color: #333;
-			font-weight: bold;
-
-		}
-
-		.topboxstyle a {
-			text-decoration: none;
-		}
-		.topboxstyle a:hover {
-			background-color: #e5f7ff;
-		}
-		.topboxstyle p {
-			font-size: 16px;
-			background-color: #fff;
-			padding: 5px 5px;
-			height: 55px;
-			overflow: hidden;
-			line-height: 1.3em;
-			text-decoration: none;
-		}
-		
-
-		.tagbtnstyle2Modify a {
-			font-size: 16px!important;
-			margin-left: 5px;
-		}
-
-		.share-this-cstmstyle {
-			margin-top: -33px;
-			opacity: 100%;
-		}
-		.share-this-cstmstyle:hover {
-			opacity: 30%;
-		}
-	</style>
+	

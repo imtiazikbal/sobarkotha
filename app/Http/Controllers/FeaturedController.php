@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Featured;
 use Illuminate\Http\Request;
 
@@ -83,5 +84,14 @@ class FeaturedController extends Controller
             'success' => true,
             'message' => 'fFatured deleted successfully'
         ]);
+    }
+  
+
+
+    function leadNewsUpdate(Request $request){
+
+        $featured = News::with('division')->latest()->take(30)->get();
+      return view('backend.leadNews.index',compact('featured'));
+    // return  $featured;
     }
 }

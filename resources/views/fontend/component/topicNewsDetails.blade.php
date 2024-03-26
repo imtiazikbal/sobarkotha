@@ -5,19 +5,16 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-light pb-1 pt-2 ">
                     <li class="breadcrumb-item"><a href=""><i class="fas fa-home text-dark"> </i></a></li>
-                    <!--
-    
-                    -->
+                    
                     <li class="breadcrumb-item active" aria-current="page">{{ $news->category->cName }}</li>
 
-                    <!-- 
+                 
                 </ol>
             </nav>
         </div>
     </section>
 
-//details query start
--->
+
 <!-- Details aria Start -->
 <section class="">
     <div class="container">

@@ -74,5 +74,21 @@
     @include('fontend.component.trending')
 
     @yield('content')
+
+    @include('fontend.layout.footer')
+
+
+    <!--JS Common Script -->
+		<script type="text/javascript" src="{{ asset('fontend') }}js/jquery-3.4.1.slim.min.js"></script> 
+		<script type="text/javascript" src="{{ asset('fontend') }}js/popper.min.js"></script>
+		<script type="text/javascript" src="{{ asset('fontend') }}js/datepickr.js"></script>
+		<script type="text/javascript" src="{{ asset('fontend') }}js/bootstrap.min.js"></script>
+	<!-- custom javascript -->
+		<script src="{{ asset('fontend') }}js/script.js" type="text/javascript"></script>
+		<script src="{{ asset('fontend') }}js/moment.js" type="text/javascript"></script>
+
+
+<!--JS Extrnal Script  -->
+
 </body>
 </html>

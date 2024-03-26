@@ -7,8 +7,6 @@
           <a class="btn" href="{{ route('newsByTopic',['topic' => $trend->id]) }}">{{ $trend->topic }}</a>
           @endforeach 
         </div>
-          
-  
         </div>
       </div>
 </div>

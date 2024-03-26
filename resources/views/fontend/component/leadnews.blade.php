@@ -43,17 +43,17 @@
           </div>
         
           <div class="row">
-     
-          
+            @foreach ($skip1Get3->news as $news )
             <div class="col-sm-4 col-6 mb-3 px-sm-3">
-              <a href="" class="text-decoration-none"> 
+              <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
                 <div class="zoomImg" style="overflow: hidden;">
-                    <img src="" class="imgsizeM rounded-0" alt="Responsive">
+                    <img src="{{ asset($news->image) }}" width="100%" class="imgsizeM rounded-0" alt="Responsive Image Here">
                 </div>
-                <h4 class="titleHead31 border-bottom"> </h4> 
+                <h4 class="titleHead31 border-bottom">{{ $news->title }}</h4> 
               </a>
             </div>
-          
+            @endforeach
+            
           </div>
         </div>
        
@@ -63,7 +63,7 @@
           <div class="row mb-3">
               <div class="col-12 text-center">
                 <a href="https://www.digitalsolutions.ltd" target="_blank" >
-                  <img src="img/gifads8.gif" width="100%" class="img-fluid" alt="Total Digital Solutions Agencies in Bangladesh.">
+                  <img src="https://waltonbd.com/image/catalog/category-banner/air-conditioner/6-star-latest.jpg" width="100%" class="img-fluid" alt="Total Digital Solutions Agencies in Bangladesh.">
                 </a>
               </div>
           </div>
@@ -100,7 +100,7 @@
             </div>
           </div>
   
-          
+        @include('fontend.component.popular')
         </div>
       </div>
 </div>

@@ -121,8 +121,11 @@
              </div>
  
              <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center ">
+                    <a class="btn btn-primary" href="{{ url('/admin/leadNews/get') }}">Lead News</a>
+                </div>
  
-                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
+                 {{-- <div class="dropdown d-md-none topbar-head-dropdown header-item">
                      <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <i class="bx bx-search fs-22"></i>
                      </button>
@@ -136,9 +139,9 @@
                              </div>
                          </form>
                      </div>
-                 </div>
+                 </div> --}}
  
-                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                 {{-- <div class="dropdown ms-1 topbar-head-dropdown header-item">
                      <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <img id="header-lang-img" src="assets/images/flags/us.svg" alt="Header Language" height="20" class="rounded">
                      </button>
@@ -254,7 +257,7 @@
                              </div>
                          </div>
                      </div>
-                 </div>
+                 </div> --}}
  
                  <div class="dropdown topbar-head-dropdown ms-1 header-item">
                      <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">

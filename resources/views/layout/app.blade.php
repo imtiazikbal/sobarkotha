@@ -342,6 +342,8 @@
 
     <!-- Theme Settings -->
    >
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
 
     <!-- JAVASCRIPT -->
     <script src=" {{ asset('assets') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -366,7 +368,6 @@
 
     <!-- App js -->
     <script src=" {{ asset('assets') }}/assets/js/app.js"></script>
-
 
 </body>
 

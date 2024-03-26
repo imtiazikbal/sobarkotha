@@ -20,32 +20,32 @@
                     <li class="nav-item ">
                         <a href="#" target="_blank"> 
                             <span data-toggle="tooltip" title="Online Virsion."> 
-                            <img src="img/sslogoico.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
+                            <img src="{{ asset('fontend') }}/img/sslogoico.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="" target="_blank"> 
                             <span class="" data-toggle="tooltip" title="We are social here."> 
-                            <img src="icon/png/facebook32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
+                            <img src="{{ asset('fontend') }}/icon/png/facebook32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
                         </a>
                     </li>
                     <br>
                     <li class="nav-item">
                         <a href="https://www.facebook.com/BanglarAlo24/" target="_blank"> 
                             <span class="" data-toggle="tooltip" title=" We are social here."> 
-                            <img src="icon/png/twitter32.png" class="img-fluid iconModify24" alt="social Icon"></span> 
+                            <img src="{{asset('fontend/icon/png/twitter32.png')}}" class="img-fluid iconModify24" alt="social Icon"></span> 
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www.facebook.com/BanglarAlo24/" target="_blank"> 
                             <span class="" data-toggle="tooltip" title=" We are social here."> 
-                            <img src="icon/png/youtube32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
+                            <img src="{{ asset('fontend') }}/icon/png/youtube32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www.facebook.com/BanglarAlo24/" target="_blank"> 
                             <span class="" data-toggle="tooltip" title=" We are social here."> 
-                            <img src="icon/png/linkedin32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
+                            <img src="{{ asset('fontend') }}/icon/png/linkedin32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
                         </a>
                     </li>
                 </ul>

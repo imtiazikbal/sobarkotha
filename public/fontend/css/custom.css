@@ -4,21 +4,21 @@
 
 
 .container {
-  max-width: 1360px;
+  max-width: 1360px !important;
 }
 @media only screen and (width: 1920px) {
-  .container { width: 80%; }
+  .container { width: 80% !important; }
 }
 
 @media only screen and (width: 1366px) {
-  .container { max-width: 90%; }
+  .container { max-width: 90% !important; }
 }
 
 @media only screen and (width: 992px) {
-  .container { max-width: 90%; }
+  .container { max-width: 90% !important; }
 }
 @media only screen and (width: 2560px) {
-  .container { max-width: 70%; }
+  .container { max-width: 70% !important; }
 }
 
 
@@ -285,4 +285,140 @@ div.scrollmenu {
   }
 
 
-/*mega menu */
+/* Footer Section */
+@media only screen and (max-width: 600px){
+  						.styleFollowUs {text-align: center;
+              } 
+              } 
+		
+              .scrlstyle {
+                font-size: 18px;
+                font-weight: 600!important;
+                padding-top:25px;
+            }
+            .bttttn {
+                font-size: 24px;
+                color: white;
+            } @media only screen and (max-width: 600px) {
+                .bttttn {
+                font-size: 24px;
+                color: white;
+                }  
+               .scrlstyle {
+                    font-size: 18px;
+                   }
+            }
+            @media only screen and (max-width: 600px) {
+                .cardtopbox {
+                  height: 100%;
+                  width: 100%;
+                } 
+                .cardtopbox h1 { 
+                  font-size: 24px;
+                  font-weight: 700;
+                } 
+                .cardtopbox h4 { 
+                  text-align: right;
+                  font-size: 18px;} 
+              } 
+
+              /* category details */
+              .boxstyleCatpageTop {
+                max-height: 70px;
+                overflow: hidden;
+                background-color: #fff;
+              }
+              .boxstyleCatpageTop:hover{
+              background-color: #e5f7ff;
+              text-decoration: none;
+              }
+
+              /* footer css */
+              .social-buttons a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                font-size: 14px;
+                width: 35px;
+                height: 35px;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                background: linear-gradient(95deg,#777,#222);
+                border-radius: 50%;
+                margin-right: 8px;
+              }
+            
+              .social-buttons a {
+                transition: 0.2s ease-in;
+              }
+              .social-buttons a:hover {
+                  transform: scale(1.2);
+              }
+
+
+              /* details page */
+              .cstomWidth {
+                width: 80%;
+              }
+          
+          
+              h2 {
+                font-weight: bold;
+                padding: 15px 0;
+          
+              } @media (max-width: 768px) {
+                h2 { 
+                  font-size: 24px;
+                  padding: 10px 0;
+                 } 
+              }
+              
+              .detailsStyle p {
+                color: #444; 
+                text-align: justify;
+                font-size: 20px;
+                line-height: 1.5;
+                margin-bottom: 18px;
+              }  @media (max-width: 768px) {
+                .detailsStyle p { 
+                  font-size: 20px;
+                }
+              }
+              
+              .detailsStyle h5 {
+                font-size: 22px;
+                color: #333;
+                font-weight: bold;
+          
+              }
+          
+              .topboxstyle a {
+                text-decoration: none;
+              }
+              .topboxstyle a:hover {
+                background-color: #e5f7ff;
+              }
+              .topboxstyle p {
+                font-size: 16px;
+                background-color: #fff;
+                padding: 5px 5px;
+                height: 55px;
+                overflow: hidden;
+                line-height: 1.3em;
+                text-decoration: none;
+              }
+              
+          
+              .tagbtnstyle2Modify a {
+                font-size: 16px!important;
+                margin-left: 5px;
+              }
+          
+              .share-this-cstmstyle {
+                margin-top: -33px;
+                opacity: 100%;
+              }
+              .share-this-cstmstyle:hover {
+                opacity: 30%;
+              }
