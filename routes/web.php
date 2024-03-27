@@ -120,6 +120,18 @@ Route::get('/admin/edit/news/{news}', [NewsController::class, 'edit']);
 Route::post('/admin/update/news/{news}', [NewsController::class, 'update']);
 Route::post('/admin/destroy/news/{news}', [NewsController::class, 'destroy']);
 
+//news search here
+Route::get('/search/news', [FontendController::class, 'searchNews'])->name('searchNews');
+
+
+
+//Order Lead News route here
+Route::post('/admin/leadNewsOrder/store', [NewsController::class, 'storeLeadNewsOreder'])->name('leadNewsStore');
+
+
+
+
+
 // get news by category
 Route::get('/admin/get-news-by-category', [FontendController::class, 'getNewsByCategory'])->name('newsByCategory');
 

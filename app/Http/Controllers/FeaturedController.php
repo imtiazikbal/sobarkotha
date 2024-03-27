@@ -90,8 +90,8 @@ class FeaturedController extends Controller
 
     function leadNewsUpdate(Request $request){
 
-        $featured = News::with('division')->latest()->take(30)->get();
-      return view('backend.leadNews.index',compact('featured'));
-    // return  $featured;
+        $featured = News::with('category')->orderBy('showtotop', 'ASC')->limit(30)->get();
+    return view('backend.leadNews.index',compact('featured'));
+   // return  $featured;
     }
 }

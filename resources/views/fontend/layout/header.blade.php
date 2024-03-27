@@ -1,4 +1,6 @@
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!-- Navbar start -->
 
 <b class="screen-overlay"></b>
@@ -82,13 +84,22 @@
 				</li>
 
 			</ul>
-			<ul id="" class="navbar-nav ml-auto">
+			<ul id="" class="navbar-nav ml-auto d-flex">
 
-				<li class="nav-item style2ndNav">
-					<a class="nav-link" href="about.php"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-          </svg> খুজুন </a>
-				</li>
+			
+                   
+					<li class="d-flex align-items-center ">
+						
+						<form action="{{ url('/search/news') }}" method="GET" class="d-flex" >
+							<input name="search" type="text" class="form-control " id="" placeholder="এখানে লিখুন">
+							<button class="btn btn-outline-secondary mr-3" type="submit" id=""><i class="ri-search-line">খু্ঁজুন</i></button>
+						
+						</form>
+						
+					 
+					</li>
+           
+				 
 
 				<li class="nav-item style2ndNav">
 					<a class="nav-link" href="{{ route('login') }}"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -107,5 +118,6 @@
 			</ul>
 		</div>
 	</nav>
+	
 
 <!-- Navbar End -->

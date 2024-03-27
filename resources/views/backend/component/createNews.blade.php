@@ -1,4 +1,11 @@
+<!-- include libraries(jQuery, bootstrap) -->
+<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+<script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- include summernote css/js-->
+<link href="summernote-bs5.css" rel="stylesheet">
+<script src="summernote-bs5.js"></script>
 <div class="card mt-5">
 
     
@@ -48,7 +55,8 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="form-floating">
-                            <input name="nBody" type="text" class="form-control" id="emailfloatingInput" placeholder="Enter your email">
+                             <div id="summernote" name="nBody"></div>
+                            
                             <label for="emailfloatingInput">News Body</label>
                         </div>
                    
@@ -160,3 +168,10 @@
     </div>
 </div>
 
+<script>
+    $('#summernote').summernote({
+      placeholder: 'Hello Bootstrap 5',
+      tabsize: 2,
+      height: 100
+    });
+  </script>

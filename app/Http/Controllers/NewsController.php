@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\News;
 use App\Models\Topic;
 use App\Models\Upazila;
@@ -11,6 +12,7 @@ use App\Models\Division;
 use App\Models\Featured;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class NewsController extends Controller
@@ -36,6 +38,7 @@ class NewsController extends Controller
      */
     public function create()
     {
+       
         $category = Category::all();
         $subcategory = SubCategory::all();
         $division = Division::all();
@@ -52,7 +55,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
+        //dd($request->all());
     
         $img = $request->file('image');
         $t = time();
@@ -122,4 +125,26 @@ class NewsController extends Controller
         $news->delete();
         return redirect('/admin/news')->with('warning', 'News deleted successfully');
     }
+
+    function storeLeadNewsOreder(Request $request){
+        
+        try {
+            $pageIds = $request->input('page_id_array');
+        
+            foreach ($pageIds as $index => $pageId) {
+                News::where('id', $pageId)->update(['showtotop' => $index]);
+            }
+        
+            return 'News order updated successfully';
+        } catch(Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+        
+    }
+
+  
+
 }

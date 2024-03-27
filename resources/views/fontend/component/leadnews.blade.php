@@ -8,22 +8,38 @@
               <!-- query start
               
               query start -->
-          @foreach ($news->news as $news )
+          @foreach ($news as $news )
 
+                </style>
               <div class="mb-3">
                 <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="card text-decoration-none border-0"> 
                   <div class="zoomImg" style="overflow: hidden;">                                          
                       <img src="{{ asset($news->image) }}" width="100%" class="img-fluid" alt="Responsive image">
                   </div>
                   <h1 class="">{{ $news->title }}</h1>
+                  <div class="col-12 og:description detailsStyle">
+                    <!-- News Body -->
+                    <h5 class="py-3 text-muted"> 
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                        </svg>
+                      
+                    </h5>
+                   {!! $news->nBody !!}
+                                      
+                    {{-- {!! implode(' ', array_slice(explode(' ', $news->nBody), 0, 100)) !!} --}}
+                    <div class="py-3 sharethis-inline-share-buttons"></div>
+                    
+                  </div>
+                
+
                 </a> 
-                <p class="">{{ Str::limit($news->nBody, 400) }}</p>
                 <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" style="color: darkblue; background-color: yellow; font-size: 14px; font-style: italic; text-decoration-line: underline; padding: 0px 10px;">আরও পড়ুন >></a>
               </div>
-
+              @endforeach
               <!--  query End -->
             </div>
-            @endforeach
+           
      
             <div class="col-sm-4 border-right mb-3">
               <div class="row">
