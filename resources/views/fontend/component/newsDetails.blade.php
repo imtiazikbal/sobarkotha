@@ -22,7 +22,7 @@
 			<div class="row">
                 <div class="col-md-2" style="margin-top:20px;">
 					<a href="https://www.google.com/search?q=digitalsolutions.ltd&ei=LvqAY6OaOrTf4-EPmJuU6A0&ved=0ahUKEwij6fvL7Mn7AhW07zgGHZgNBd0Q4dUDCA4&uact=5&oq=digitalsolutions.ltd" target="_blank">
-			          	<img src="{{ asset('fontend/img/adsindetails.gif') }}" class="img-fluid animated fadeInUp" width="100%" alt="Digital Solutions Ltd">
+			          	<img src="https://placehold.co/60x227/png" class="img-fluid animated fadeInUp" width="100%" alt="Digital Solutions Ltd">
 			        </a>
 				</div>
 				<!--News Details aria-->
@@ -68,8 +68,9 @@
 									<!-- News Body -->
 									<h5 class="py-3 text-muted"> 
 										<span>
-											<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+											<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
 											</svg>
+											{{ $news->reporter_name }}
 										
 									</h5>
                                     

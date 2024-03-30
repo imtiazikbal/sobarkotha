@@ -37,8 +37,6 @@
   
       <div class="form-row">
         @foreach ($cSports1SkipTake3->news as $news)
-            
-        @endforeach
         <div class="col-4 mt-2">
           <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
             <div class="oomImg" style="overflow: hidden;">
@@ -47,6 +45,8 @@
             <h4 class="titleHead333 border-bottom">{{ $news->title }} </h4> 
           </a>
         </div>
+        @endforeach
+       
      
       </div>
   

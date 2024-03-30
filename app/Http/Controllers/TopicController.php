@@ -55,7 +55,7 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        //
+       return view('backend.topic.edit',compact('topic'));
     }
 
     /**
@@ -63,7 +63,13 @@ class TopicController extends Controller
      */
     public function update(Request $request, Topic $topic)
     {
-        //
+        $validate = $request->validate([
+            'topic' => 'required',
+        ]);
+       $topic->update($validate);
+
+        return redirect('/admin/topic')->with('success','Topic  Updated successfully');
+        
     }
 
     /**
@@ -71,6 +77,7 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        //
+        $topic->delete();
+        return redirect('/admin/topic')->with('warning', 'Topic deleted successfully');
     }
 }

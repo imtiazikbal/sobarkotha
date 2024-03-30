@@ -39,7 +39,7 @@
                       </div>
                       <h1 class="titleHead1">{{ $news->title }}</h1>
                     </a>
-                    <p style="font-size:18px; margin: 0px 40px;">{{ Str::limit($news->nBody, 400) }}
+                    <p style="font-size:18px; margin: 0px 40px;">{!! Str::limit($news->nBody, 400) !!}
                       <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" style="color: darkblue; background-color: yellow; font-size: 14px; font-style: italic; text-decoration-line: underline; padding: 0px 10px; " >আরও পড়ুন</a>
                     </p>
                 </div>
@@ -75,13 +75,13 @@
 
                 <div class="row">	
                     <div class="col-12">
-                       <img src="https://tpc.googlesyndication.com/simgad/14640646920884776310" alt="">
+                       <img src="https://placehold.co/300x250/png" alt="">
                     </div>
                 </div>
 
                 <div class="row mb-3 mt-3">
                     <div class="col-12">
-                        <img src="https://tpc.googlesyndication.com/simgad/14640646920884776310" alt="">
+                        <img src="https://placehold.co/300x250/png" alt="">
 
                     </div>
                 </div>

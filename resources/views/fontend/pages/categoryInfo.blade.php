@@ -10,7 +10,7 @@
         <!--Ads-->
         <div class="col-12 mb-3"> 
             <a href="https://www.google.com/search?q=digitalsolutions.ltd&ei=LvqAY6OaOrTf4-EPmJuU6A0&ved=0ahUKEwij6fvL7Mn7AhW07zgGHZgNBd0Q4dUDCA4&uact=5&oq=digitalsolutions.ltd" target="_blank">
-              <img src="https://tpc.googlesyndication.com/simgad/10466965592725141711" class="img-fluid" width="100%" alt="Rimage">
+              <img src="https://placehold.co/900x100/png" class="img-fluid" width="100%" alt="Rimage">
             </a>
           </div>
       </div>

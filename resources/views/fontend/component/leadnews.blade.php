@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <img class="py-3" src="https://placehold.co/1200x100/png" alt="">
+      </div>
+    </div>
+  </div>
     <div class="row mb-3">
         <!-- First Lead -->
         <div class="col-sm-9 col-12">
@@ -16,16 +23,16 @@
                   <div class="zoomImg" style="overflow: hidden;">                                          
                       <img src="{{ asset($news->image) }}" width="100%" class="img-fluid" alt="Responsive image">
                   </div>
-                  <h1 class="">{{ $news->title }}</h1>
-                  <div class="col-12 og:description detailsStyle">
+                  <h1 class="pt-3">{{ $news->title }}</h1>
+                  <div class="col-12 og:description detailsStyle mt-3">
                     <!-- News Body -->
-                    <h5 class="py-3 text-muted"> 
+                    {{-- <h5 class="py-3 text-muted"> 
                       <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
                         </svg>
                       
-                    </h5>
-                   {!! $news->nBody !!}
+                    </h5> --}}
+                    {!! Str::limit($news->nBody, 300) !!}
                                       
                     {{-- {!! implode(' ', array_slice(explode(' ', $news->nBody), 0, 100)) !!} --}}
                     <div class="py-3 sharethis-inline-share-buttons"></div>
@@ -43,7 +50,7 @@
      
             <div class="col-sm-4 border-right mb-3">
               <div class="row">
-                @foreach ($skip1Get2->news as $news )
+                @foreach ($leadNews3 as $news )
                 <div class="col-sm-12 col-6 mb-3 px-2 px-sm-3">
                   <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
                     <div class="zoomImg" style="overflow: hidden;">
@@ -59,7 +66,7 @@
           </div>
         
           <div class="row">
-            @foreach ($skip1Get3->news as $news )
+            @foreach ($skip1Get3 as $news )
             <div class="col-sm-4 col-6 mb-3 px-sm-3">
               <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
                 <div class="zoomImg" style="overflow: hidden;">
@@ -79,7 +86,7 @@
           <div class="row mb-3">
               <div class="col-12 text-center">
                 <a href="https://www.digitalsolutions.ltd" target="_blank" >
-                  <img src="https://waltonbd.com/image/catalog/category-banner/air-conditioner/6-star-latest.jpg" width="100%" class="img-fluid" alt="Total Digital Solutions Agencies in Bangladesh.">
+                  <img src="https://placehold.co/600x400" width="100%" class="img-fluid" alt="Total Digital Solutions Agencies in Bangladesh.">
                 </a>
               </div>
           </div>

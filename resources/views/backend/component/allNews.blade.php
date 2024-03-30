@@ -45,7 +45,7 @@
                               <th data-ordering="false">User</th>
                               <th>Body</th>
                               <th>Category</th>
-                              <th>Divison</th>
+                      
                               <th>Published</th>
                               <th>Status</th>
                               <th>Action</th>
@@ -61,7 +61,7 @@
                             <td>{{ $news->user->name }}</td>
                             <td>{{ Str::limit($news->title, 70) }}</td>
                             <td>{{ $news->category->cName }}</td>
-                            <td>{{ $news->division->div_name }}</td>
+                          
                             <td>{{ $news->created_at->diffForHumans() }}</td>
                             <td><span class="badge bg-info-subtle text-info">{{ $news->status }}</span></td>
                             

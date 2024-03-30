@@ -19,6 +19,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
+        $sidebarCat = Category::all();
 
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
@@ -39,7 +40,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
-
+        $sidebarCat = Category::all();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         // main featured news 1
@@ -48,13 +49,12 @@ class FontendController extends Controller
         // $news = Featured::where('featured','=','Main')->with('news',fn($q) => $q->where('status','published')->latest()->take(1))->first();
         // main fetured news skip 1 take 2
         //  $skip1Get2 = News::with('category')->orderBy('showtotop', 'ASC')->latest()->skip(1)->take(2)->first();
-        $skip1Get2 = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(2))->first();
+       // $skip1Get2 = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(3))->first();
+        $leadNews3 = News::where('status', 'published')->skip(1)->take(3)->get();
 
         // Main feartured skip 3 get 6 news
-        $skip1Get3 = Featured::query();
-        if ($skip1Get3) {
-            $skip1Get3 = $skip1Get3->where('featured', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(3)->take(6))->first();
-        }
+       $skip1Get3 = News::with('category')->latest()->skip(6)->take(6)->get();
+        
 
         $trending = Topic::all();
         //Banglasesh Category
@@ -70,13 +70,18 @@ class FontendController extends Controller
         $cSaraDesh = Category::where('category_title', 'saradesh')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(1))->first();
         $cSaraDeshSkip1Take3 = Category::where('category_title', 'saradesh')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(2))->first();
 
+        //apanr Jonno
+        $ApnarJonno = Category::where('category_title', 'bangladesh')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(4))->first();
+        
+
+
         // sports
         $cSports1 = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(1))->first();
-        $cSports1SkipTake3 = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(3))->first();
+        $cSports1SkipTake3 = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(1)->take(4))->first();
 
         // sports 2
         $cSports2 = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(1))->first();
-        $sport2Old = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->orderBy('id', 'desc')->take(4))->first();
+        $sport2Old = Category::where('category_title', 'sports')->with('news', fn($q) => $q->where('status', 'published')->orderBy('id', 'asc')->take(4))->first();
 
         //popular
         $latest = News::where('status', 'published')->orderBy('id', 'desc')->first();
@@ -84,10 +89,10 @@ class FontendController extends Controller
         // scroll news
         $scrollNews = News::where('scroll', '1')->where('status', 'published')->orderBy('id', 'desc')->get();
 
-        return view('fontend.home', compact('category', 'date', 'news', 'skip1Get2', 'featured', 'trending', 'cBangladesh', 'cRajniti', 'cSaraDesh', 'cBangladeshSkip1Take3', 'cRajnitiSkip1Take3', 'cSaraDeshSkip1Take3', 'cSports1', 'cSports1SkipTake3', 'cSports2', 'sport2Old', 'skip1Get3', 'latest', 'scrollNews'));
+        return view('fontend.home', compact('category', 'date', 'news', 'leadNews3', 'featured', 'trending', 'cBangladesh', 'cRajniti', 'cSaraDesh', 'cBangladeshSkip1Take3', 'cRajnitiSkip1Take3', 'cSaraDeshSkip1Take3', 'cSports1', 'cSports1SkipTake3', 'cSports2', 'sport2Old', 'skip1Get3', 'latest', 'scrollNews','ApnarJonno','sidebarCat'));
 
-        //return $news ;
-        // return $skip1Get2 ;
+        //return $skip1Get3 ;
+        // return $leadNews3 ;
         // return  $featured;
         //return $cBangladeshSkip1Take3;
 
@@ -106,7 +111,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
-
+        $sidebarCat = Category::all();
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         $trending = Topic::all();
 
@@ -129,7 +134,7 @@ class FontendController extends Controller
             ->with('news', fn($q) => $q->where('status', 'published')->latest()->skip(7)->take(30))
             ->first();
 
-        return view('fontend.pages.CatDetails', compact('news', 'date', 'category', 'featured', 'trending', 'scrollNews', 'catNewsSkip1Get6', 'catNewsSkip7Get30', 'latest'));
+        return view('fontend.pages.CatDetails', compact('news', 'date', 'category', 'featured', 'trending', 'scrollNews', 'catNewsSkip1Get6', 'catNewsSkip7Get30', 'latest','sidebarCat'));
         //return $news;
     }
 
@@ -140,7 +145,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
-
+        $sidebarCat = Category::all();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         // main featured news 1
@@ -163,7 +168,7 @@ class FontendController extends Controller
 
         //scroll
         $scrollNews = News::where('scroll', '1')->where('status', 'published')->orderBy('id', 'desc')->get();
-        return view('fontend.pages.details', compact('category', 'date', 'news', 'skip1Get2', 'featured', 'latest', 'trending', 'divisionNews', 'scrollNews'));
+        return view('fontend.pages.details', compact('category', 'date', 'news', 'skip1Get2', 'featured', 'latest', 'trending', 'divisionNews', 'scrollNews','sidebarCat'));
         //return $divisionNews;
         // return $latest;
     }
@@ -174,7 +179,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
-
+        $sidebarCat = Category::all();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         // main featured news 1
@@ -191,7 +196,7 @@ class FontendController extends Controller
             ->with('category', 'division', 'district', 'user')
             ->first();
 
-        return view('fontend.pages.topicDetails', compact('category', 'date', 'news', 'skip1Get2', 'featured', 'latest', 'trending', 'scrollNews'));
+        return view('fontend.pages.topicDetails', compact('category', 'date', 'news', 'skip1Get2', 'featured', 'latest', 'trending', 'scrollNews','sidebarCat'));
     }
 
     function searchNews(Request $request)
@@ -203,7 +208,7 @@ class FontendController extends Controller
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::all();
-
+        $sidebarCat = Category::all();
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         $trending = Topic::all();
 
@@ -211,7 +216,9 @@ class FontendController extends Controller
         $latest = News::where('status', 'published')->orderBy('id', 'desc')->first();
        
 
-        $news = News::with('category','division','district','upazila','user')->where('status','published')->where('title','like','%'.$request->search.'%')->get();
-        return view('fontend.pages.searchNewsPage', compact('news', 'category', 'date', 'featured', 'trending', 'scrollNews', 'latest'));
-    }
+        $news = News::with('category','division','district','upazila','user')->where('status','published')->where('title','like','%'.$request->search.'%')->orWhere('nBody','like','%'.$request->search.'%')->get();
+       
+        return view('fontend.pages.searchNewsPage', compact('news', 'category', 'date', 'featured', 'trending', 'scrollNews', 'latest','sidebarCat'));
+     // return $news;
+      }
 }

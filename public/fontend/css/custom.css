@@ -365,7 +365,7 @@ div.scrollmenu {
           
               h2 {
                 font-weight: bold;
-                padding: 15px 0;
+         
           
               } @media (max-width: 768px) {
                 h2 { 
@@ -422,3 +422,202 @@ div.scrollmenu {
               .share-this-cstmstyle:hover {
                 opacity: 30%;
               }
+
+
+              /* sport */
+            
+
+  :root {
+    --primary-heading: 26px; /* Example primary size */
+    --primary-font-wight: 600; /* Example primary color */
+    --primary-lineHieght: 30px; /* Example secondary color */
+    --secondary-heading: 20px; /* Example secondary color */
+    --secondary-color: #000000ad; /* Example secondary color */
+    --font-size: 16px; /* Example font size */
+    --border-right: 1px solid #e5e5e5af; /* Example border right */
+    --padding-right: 10px; /* Example border right */
+    /* Add more custom CSS variables as needed */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+}
+a:hover{
+ 
+    color: blue;
+    text-decoration: none;
+
+}
+.CategoryName {
+    padding-top: 10px;
+    border-top: 4px solid #8c8787;
+    margin-top: 50px;
+}
+
+span{
+   font-size: small;
+   padding: 0px 5px 0px 5px;
+}
+.adsBg{
+    background-color:#F7F7F7;
+    padding: 40px 0px 40px 0px;
+}
+
+.Category_content img {
+    padding: 0px 10px 0px 0px;
+}
+.Category_content h2 {
+   font-size: 20px;
+   line-height: var(--primary-lineHieght);
+   margin-right: 10px;
+   font-weight:var(--primary-font-wight);
+
+}.Category_content h3 {
+   font-size: var( --secondary-heading);
+   color: var(--secondary-color);
+}
+.br {
+    border-right: var(--border-right);
+    padding-right: var(--padding-right);
+}
+.bb{
+    border-bottom:var(--border-right);
+    padding-bottom:var(--padding-right);
+}
+.Cpr {
+    padding-right: var(--padding-right);
+}
+.Cpb {
+    padding-bottom: 20px;
+}
+.pr{
+    padding-right: var(--padding-right);
+}
+
+.content_1 img {
+    margin-right: 20px;
+    padding-bottom: var(--padding-right);
+}
+.content_1 h2{
+    font-size: 20px;
+   font-weight:var(--primary-font-wight);
+
+}
+.extraCategory_img img {
+    width: 100%;
+}
+
+.extraCategory_content h2{
+   font-weight:var(--primary-font-wight);
+
+    font-size: var(--primary-heading);
+}
+.extraCategory_content h3{
+    font-size: var(--secondary-heading);
+   color: var(--secondary-color);
+
+}
+.row .col-md-3:last-child {
+    border-right: none;
+}
+@media screen and (max-width: 768px) {
+    .Category_content{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .content_1 img {
+    margin-right: 0px;
+    padding-bottom: var(--padding-right);
+}
+
+.content_1{
+display: flex;
+justify-content: space-between;
+}
+.Category_content img{
+    width: 300px;
+    height: 200px;
+}
+
+.newsSearch form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.newsSearch form bg-transparent{
+    padding-top: 50px;
+}
+.py{
+    padding-bottom: 10px;
+}
+}
+
+.search_title h2{
+    font-size: var(--primary-heading);
+    color: black;
+}
+.catBangladesh h2{
+    font-size: var(--primary-heading);
+    font-weight: var(--primary-font-wight);
+}
+.catBangladesh h3{
+    font-size: var(--secondary-heading);
+}
+
+
+.col-md-5 .row > a:second-child {
+    padding-top: 10px; /* Remove top padding for the first child element */
+}
+
+.col-md-5 .row > a:last-child {
+    border-bottom: none; /* Remove bottom border for the last child element */
+}
+.row > a:last-child {
+    padding-bottom: 0px;
+}
+.lastBorderRemove > a:last-child {
+    border-bottom: none;
+}
+.lastBorderRemove > a:first-child {
+  padding-top:  0px !important;
+}
+
+
+/* Menu bar */
+#menuBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+
+  box-shadow: #000000ad 0px 0px 10px;
+  height: 100%;
+  background-color: #f1f1f1;
+  z-index: 100000000;
+  transition: transform 0.3s ease;
+}
+
+.hidden {
+  transform: translateX(100%);
+}
+
+#closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

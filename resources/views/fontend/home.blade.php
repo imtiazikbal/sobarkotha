@@ -7,6 +7,10 @@
 
 @include('fontend.pages.sports')
 
+@include('fontend.component.AdsInBody')
+@include('fontend.component.ApnarJonno')
+
+@include('fontend.component.stickyAds')
 
 @endsection
 

@@ -7,16 +7,17 @@
         <div class="row">
             <div class="col-12">
                 <div>
-                    <form action="{{ url('/admin/update/category/'.$category->id) }}" method="POST">
-                        <label for="borderInput" class="form-label">Category Name</label>
-                    <input type="text" name="cName" class="form-control border-dashed" value="{{ $category->cName }}" id="borderInput" placeholder="Category Name">
-                    @if ($errors->has('cName'))
-                     <span class="error">{{ $errors->first('cName') }}</span>
+                    <form action="{{ url('admin/update/topic/'.$topic->id) }}" method="POST">
+                     
+                        <label for="borderInput" class="form-label">Topic Name</label>
+                    <input type="text" value="{{ $topic->topic }}" name="topic" class="form-control border-dashed" id="borderInput" placeholder="Enter your Topic name">
+                    @if ($errors->has('topic'))
+                     <span class="error">{{ $errors->first('topic') }}</span>
                     @endif
                     <div>
-                    <button type="submit" class="btn btn-primary mt-2">Update Category</button>                  
+                    <button type="submit" class="btn btn-primary mt-2">Update Topic</button>                  
 
-                    <a href="{{ url('/admin/category') }}" class="btn btn-primary mt-2">All Category</a>                  
+                    <a href="{{ url('/admin/topic') }}" class="btn btn-primary mt-2">All Topic</a>                  
 
                     </div>
                   </form>
@@ -26,6 +27,13 @@
         </div>
         
 </div>
+
+<script>
+    async function saveData()() {
+        alert(1)
+        
+    }
+</script>
 @if (session()->has('success'))
 <script>
     const Toast = Swal.mixin({

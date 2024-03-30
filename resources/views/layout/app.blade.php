@@ -32,6 +32,7 @@
     <link href=" {{ asset('assets') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
    
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+      <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
   
    
 
