@@ -2,7 +2,7 @@
 
 @section('content')
 <head>
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Sortable Table Rows</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -17,18 +17,16 @@
                         <tr>
                             <th width="30px">Sl No</th>  
                             <th>Title</th>
-                            <th>News Image</th>
                             <th>Created At</th>
                         </tr>
                     </thead>
                     <tbody id="page_list">
                         <!-- Populate table rows with data from the controller -->
-                        @foreach ($featured as $index => $news)
-                        <tr style="cursor: move;" class="row1" data-id="{{ $news->id }}">
+                        @foreach ($category as $index => $cat)
+                        <tr style="cursor: move;" class="row1" data-id="{{ $cat->id }}">
                             <td class="pl-3"><i class="fa fa-sort"></i>{{ $index + 1 }}</td>
-                            <td>{{ $news->title }}</td>
-                            <td class=""><img src="{{ asset($news->image) }}" width="50px" alt=""></td>
-                            <td>{{ $news->created_at->format('d-m-Y h:m:s') }}</td>
+                            <td>{{$cat->cName}}</td>
+                            <td>{{ $cat->created_at->diffForHumans() }}</td>
                         </tr>
                         @endforeach
                     </tbody> 
@@ -43,27 +41,26 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
-    $("#page_list").sortable({
-        placeholder: "ui-state-highlight",
-        update: function(event, ui) {
-            var page_id_array = $("#page_list").sortable("toArray", { attribute: "data-id" });
+            $("#page_list").sortable({
+                placeholder: "ui-state-highlight",
+                update: function(event, ui) {
+                    var page_id_array = $("#page_list").sortable("toArray", { attribute: "data-id" });
 
-            $.ajax({
-                url: "{{ route('leadNewsStore') }}",
-                method: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    page_id_array: page_id_array
-                },
-                success: function(data) {
-                    alert(data);
-                    location.reload();
+                    $.ajax({
+                        url: "{{ route('sortCategory') }}",
+                        method: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            page_id_array: page_id_array
+                        },
+                        success: function(data) {
+                            alert(data);
+                            location.reload();
+                        }
+                    });
                 }
             });
-        }
-    });
-});
-
+        });
     </script>
 
 @if (session()->has('success'))
@@ -78,15 +75,14 @@
         showConfirmButton: false,
         timer: 2500,
         timerProgressBar: true,
-    })
+    });
 
-    ;
     (async () => {
         Toast.fire({
             icon: 'success',
             title: '{{ session('success') }}',
         })
-    })()
+    })();
 </script>
-@endif  
+@endif
 @endsection

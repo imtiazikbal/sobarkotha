@@ -55,7 +55,7 @@ class FeaturedController extends Controller
      */
     public function edit(Featured $featured)
     {
-        //
+        return view('backend.featured.edit',compact('featured'));
     }
 
     /**
@@ -66,12 +66,9 @@ class FeaturedController extends Controller
         $validate = $request->validate([
             'featured' => 'required',
         ]);
-       $data = $featured->update($validate);
-        return response()->json([
-            'success' => true,
-            'message' => 'Featured created successfully',
-            'data'=> $data
-        ]);
+     $featured->update($validate);
+     return redirect('/admin/featured')->with('success','Featured Updated successfully');
+        
     }
 
     /**
@@ -80,10 +77,8 @@ class FeaturedController extends Controller
     public function destroy(Featured $featured)
     {
         $featured->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'fFatured deleted successfully'
-        ]);
+        return redirect('/admin/featured')->with('success','Featured Updated successfully');
+
     }
   
 

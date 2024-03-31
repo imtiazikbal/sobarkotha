@@ -29,10 +29,10 @@
                 <div class="header d-flex justify-content-between">
                  
                     <div class="card-header">
-                      <h5 class="card-title mb-0">All Division</h5>
+                      <h5 class="card-title mb-0">All Category</h5>
                   </div>
                   <div class="card-header">
-                    <a href="{{ url('/admin/create/division') }}" class="btn btn-primary">Add Division</a>
+                    <a href="{{ url('/admin/create/category') }}" class="btn btn-primary">Add Category</a>
                 </div>
   
                 </div>
@@ -46,14 +46,14 @@
                                         <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
                                     </div>
                                 </th>
-                                <th>Division</th>
-
+                                <th>Category Name</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($division as $division)
+                            @foreach ($category as $category)
                             <tr>
                                 <th scope="row">
                                     <div class="form-check">
@@ -61,10 +61,11 @@
                                     </div>
                                 </th>
                                 
-                                <td>{{$division->div_name  }}</td>
+                                <td>{{$category->cName  }}</td>
                       
                      
                         
+                                <td><span class="badge bg-info-subtle text-info">{{$category->status==1?'Active':'Unactive'}}</span></td>
                       
                                 <td>
                                     <div class="dropdown d-inline-block">
@@ -73,10 +74,10 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" style="">
                                             <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                            <li><a href="{{url('/admin/edit/subCategory/'.$division->id) }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            <li><a href="{{url('admin/edit/'.$category->id) }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                             <li>
 
-                                                <form action="{{ url('/admin/destroy/division/'.$division->id) }}" method="POST">
+                                                <form action="{{ url('/admin/destroy/category/'.$category->id) }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item remove-item-btn">
                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete

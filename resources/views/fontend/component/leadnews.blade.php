@@ -20,8 +20,15 @@
                 </style>
               <div class="mb-3">
                 <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="card text-decoration-none border-0"> 
-                  <div class="zoomImg" style="overflow: hidden;">                                          
-                      <img src="{{ asset($news->image) }}" width="100%" class="img-fluid" alt="Responsive image">
+                  <div class="zoomImg" style="overflow: hidden;"> 
+
+                    @if($news->image && file_exists(public_path($news->image)))
+                    <img src="{{ asset($news->image) }}" alt="News Image">
+                @else
+                    <img src="{{ asset('fontend/img/logomain.png') }}" width="100%" alt="Default Image">
+                @endif
+                
+                
                   </div>
                   <h1 class="pt-3">{{ $news->title }}</h1>
                   <div class="col-12 og:description detailsStyle mt-3">
@@ -54,7 +61,13 @@
                 <div class="col-sm-12 col-6 mb-3 px-2 px-sm-3">
                   <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
                     <div class="zoomImg" style="overflow: hidden;">
-                        <img src="{{ asset($news->image) }} " class="img-fluid" alt="Responsive image">
+                       
+                   @if(file_exists(public_path($news->image)))
+                      <img src="{{ asset($news->image) }}" alt="Your Image">
+                  @else
+                      <img src="{{asset('fontend/img/logomain.png') }}" alt="Default Image">
+                  @endif
+
                     </div>
                     <h4 class="titleHead31 border-bottom">  {{$news->title}}
                     </h4> 

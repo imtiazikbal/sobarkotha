@@ -72,10 +72,10 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" style="">
                                             <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                            <li><a href="{{url('/admin/edit/subCategory/'.$district->id) }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            <li><a href="{{url('/admin/edit/district/'.$district->id) }}" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                             <li>
 
-                                                <form action="{{ url('/admin/destroy/subCategory/'.$district->id) }}" method="POST">
+                                                <form action="{{ url('/admin/destroy/district/'.$district->id) }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item remove-item-btn">
                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete

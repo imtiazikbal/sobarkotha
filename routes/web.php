@@ -56,6 +56,9 @@ Route::get('/admin/edit/{category}', [CategoryController::class, 'edit']);
 Route::post('/admin/update/category/{category}', [CategoryController::class, 'update']);
 Route::post('/admin/destroy/category/{category}', [CategoryController::class, 'destroy']);
 
+// categorty sortable
+
+Route::post('/admin/sort/category', [CategoryController::class, 'sort'])->name('sortCategory');
 //subCategory Route
 
 Route::get('/admin/subCategory', [SubCategoryController::class, 'index']);
@@ -141,5 +144,7 @@ Route::get('/admin/get-news-by-title', [FontendController::class, 'getNewsByTitl
 
 //news by trending
 Route::get('/get-news-by-topic', [FontendController::class, 'newsByTopic'])->name('newsByTopic');
+
+Route::get('/bangladesh/district-news', [FontendController::class, 'bangladeshDistrictNews'])->name('bangladeshDistrictNews');
 
 require __DIR__.'/auth.php';

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::where('status',true)->get();
-        return view('backend.category.index',compact('category'));
+        $category = Category::where('status',true)->orderBy('showtotop', 'ASC')->get();
+       // return view('backend.category.index',compact('category'));
+        return view('backend.category.testing',compact('category'));
         
     }
 
@@ -83,5 +85,23 @@ class CategoryController extends Controller
         //     'message' => 'Category deleted successfully',
         //     'data'=> $data
         // ]);
+    }
+
+    public function sort(Request $request)
+    {
+        try {
+            $categoryIds = $request->input('page_id_array');
+    
+            foreach ($categoryIds as $index => $categoryId) {
+                Category::where('id', $categoryId)->update(['showtotop' => $index]);
+            }
+    
+            return 'Category order updated successfully';
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }

@@ -5,7 +5,7 @@
 
 <!-- Footer Section 2 Start -->
 	<section class="mt-3 py-3" style="background-color: #ddd; border-top: 3px solid #777;" >
-		<div class="container">
+		<div class="">
 
 			<div class="row my-4" style="color:#333;">
 				<div class="col-md-3 col-12 text-md-left text-center">

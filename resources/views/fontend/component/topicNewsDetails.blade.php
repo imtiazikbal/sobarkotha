@@ -57,7 +57,7 @@
                                 </h5>
                                 
 
-                            {{ $news->nBody }}
+                            {!! $news->nBody !!}
                                 <div class="py-3 sharethis-inline-share-buttons"></div>
                                 
                             </div>

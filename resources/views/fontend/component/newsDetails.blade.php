@@ -20,7 +20,7 @@
 		<div class="container">
 
 			<div class="row">
-                <div class="col-md-2" style="margin-top:20px;">
+                <div class="col-md-2 d-none d-sm-block" style="margin-top:20px;">
 					<a href="https://www.google.com/search?q=digitalsolutions.ltd&ei=LvqAY6OaOrTf4-EPmJuU6A0&ved=0ahUKEwij6fvL7Mn7AhW07zgGHZgNBd0Q4dUDCA4&uact=5&oq=digitalsolutions.ltd" target="_blank">
 			          	<img src="https://placehold.co/60x227/png" class="img-fluid animated fadeInUp" width="100%" alt="Digital Solutions Ltd">
 			        </a>

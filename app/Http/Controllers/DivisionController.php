@@ -57,7 +57,7 @@ class DivisionController extends Controller
      */
     public function edit(Division $division)
     {
-        //
+        return view('backend.Division.edit',compact('division'));
     }
 
     /**
@@ -69,12 +69,9 @@ class DivisionController extends Controller
         $validate = $request->validate([
             'div_name' => 'required',
         ]);
-       $data = $division->update($validate);
-        return response()->json([
-            'success' => true,
-            'message' => 'Division Update successfully',
-            'data'=> $data
-        ]);
+       $division->update($validate);
+       return redirect()->back()->with('success','Division Delete successfully');
+
     }
 
     /**
@@ -83,10 +80,7 @@ class DivisionController extends Controller
     public function destroy(Division $division)
     {
         $division->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'Division Delete successfully'
-        ]);
+        return redirect('/admin/division')->with('success','Division Delete successfully');
 
     }
 }

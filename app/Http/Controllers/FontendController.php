@@ -39,7 +39,7 @@ class FontendController extends Controller
         $dateNew = date('h:i A - d F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
-        $category = Category::all();
+        $category = Category::orderBy('showtotop', 'ASC')->get();
         $sidebarCat = Category::all();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
@@ -110,8 +110,8 @@ class FontendController extends Controller
         $dateNew = date('h:i A - d F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
-        $category = Category::all();
-        $sidebarCat = Category::all();
+        $category = Category::orderBy('showtotop', 'ASC')->get();
+        $sidebarCat = Category::orderBy('showtotop', 'ASC')->get();
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         $trending = Topic::all();
 
@@ -144,8 +144,8 @@ class FontendController extends Controller
         $dateNew = date('h:i A - d F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
-        $category = Category::all();
-        $sidebarCat = Category::all();
+        $category = Category::orderBy('showtotop', 'ASC')->get();
+        $sidebarCat = Category::orderBy('showtotop', 'ASC')->get();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         // main featured news 1
@@ -178,8 +178,8 @@ class FontendController extends Controller
         $dateNew = date('h:i A - d F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
-        $category = Category::all();
-        $sidebarCat = Category::all();
+        $category = Category::orderBy('showtotop', 'ASC')->get();
+        $sidebarCat = Category::orderBy('showtotop', 'ASC')->get();
         // Nav bar featured news
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         // main featured news 1
@@ -207,8 +207,8 @@ class FontendController extends Controller
         $dateNew = date('h:i A - d F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
-        $category = Category::all();
-        $sidebarCat = Category::all();
+        $category = Category::orderBy('showtotop', 'ASC')->get();
+        $sidebarCat = Category::orderBy('showtotop', 'ASC')->get();
         $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
         $trending = Topic::all();
 
@@ -220,5 +220,23 @@ class FontendController extends Controller
        
         return view('fontend.pages.searchNewsPage', compact('news', 'category', 'date', 'featured', 'trending', 'scrollNews', 'latest','sidebarCat'));
      // return $news;
+      }
+      function bangladeshDistrictNews(Request $request){
+        //Essential for all page here
+
+        date_default_timezone_set('Asia/Dhaka');
+        $dateNew = date('h:i A - d F Y');
+        $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
+        // all category here
+        $category =Category::orderBy('showtotop', 'ASC')->get();
+        $sidebarCat =Category::orderBy('showtotop', 'ASC')->get();
+        $featured = Featured::where('featured', '=', 'Main')->with('news', fn($q) => $q->where('status', 'published')->latest()->take(3))->first();
+        $trending = Topic::all();
+
+        $scrollNews = News::where('scroll', true)->where('status', 'published')->get();
+        $latest = News::where('status', 'published')->orderBy('id', 'desc')->first();
+
+        $news = News::Where('district_id', $request->district)->orWhere('division_id', $request->division)->orWhere('upazila_id', $request->upazila)->with('category','division','district','upazila','user')->where('status','published')->get();
+        return $news;
       }
 }

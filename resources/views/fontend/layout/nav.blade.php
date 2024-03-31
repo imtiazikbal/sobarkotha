@@ -42,12 +42,6 @@
                             <img src="{{ asset('fontend') }}/icon/png/youtube32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="https://www.facebook.com/BanglarAlo24/" target="_blank"> 
-                            <span class="" data-toggle="tooltip" title=" We are social here."> 
-                            <img src="{{ asset('fontend') }}/icon/png/linkedin32.png" class="img-fluid iconModify24" alt=" social Icon"></span> 
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>

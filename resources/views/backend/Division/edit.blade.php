@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div>
-                    <form action="{{ url('/admin/update/subCategory/'.$subCategory->id) }}" method="POST">
+                    <form action="{{ url('/admin/update/division/'.$division->id) }}" method="POST">
                         @csrf
                         <div class="col-lg-12">
                     <label for="borderInput" class="form-label">Category Name</label>
@@ -40,9 +40,7 @@
         
 </div>
 
-<script>
-  
-</script>
+
 @if (session()->has('success'))
 <script>
     const Toast = Swal.mixin({

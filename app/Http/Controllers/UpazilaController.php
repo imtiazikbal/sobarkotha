@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\District;
 use App\Models\Upazila;
+use App\Models\District;
+use App\Models\Division;
 use Illuminate\Http\Request;
 
 class UpazilaController extends Controller
@@ -59,7 +60,10 @@ class UpazilaController extends Controller
      */
     public function edit(Upazila $upazila)
     {
-        //
+       $upazila = Upazila::where('id',$upazila->id)->with('district','district.division')->first();
+       $district = District::all();
+       $division = Division::all();
+       return view('backend.upazila.edit',compact('upazila','district','division'));
     }
 
     /**
@@ -71,12 +75,8 @@ class UpazilaController extends Controller
             'upazila_name' => 'required|max:255',
             'district_id' => 'required',
         ]);
-        $data = $upazila->update($validate);
-        return response()->json([
-            'success' => true,
-            'message' => 'Upazila created successfully',
-            'data'=> $data
-        ]);
+       $upazila->update($validate);
+       return redirect()->back()->with('success','Upazila created successfully');
     }
 
     /**
@@ -85,11 +85,7 @@ class UpazilaController extends Controller
     public function destroy(Upazila $upazila)
     {
         $upazila->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'Upazila Delete successfully',
-            
-        ]);
+        return redirect('/admin/upazila')->with('success','Upazila deleted successfully');
 
     }
 }

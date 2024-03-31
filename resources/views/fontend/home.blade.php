@@ -7,8 +7,10 @@
 
 @include('fontend.pages.sports')
 
-@include('fontend.component.AdsInBody')
+@include('fontend.component.adsbody')
 @include('fontend.component.ApnarJonno')
+
+@include('fontend.component.amarKhabor')
 
 @include('fontend.component.stickyAds')
 

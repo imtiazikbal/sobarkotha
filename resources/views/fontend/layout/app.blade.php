@@ -47,6 +47,8 @@
     <link rel="shortcut icon" href="{{ asset('fontend') }}/img/favicon_io/favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
     <!-- w3css CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('fontend') }}/css/solaimanLipi.css">
