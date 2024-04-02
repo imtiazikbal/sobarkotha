@@ -15,4 +15,7 @@ class Upazila extends Model
      public function division(){
         return $this->belongsTo(Division::class);
      }
+     function news(){
+        return $this->hasMany(News::class);
+     }
 }

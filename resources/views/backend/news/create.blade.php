@@ -1,12 +1,12 @@
 @extends('layout.app')
 @section('content')
 
-<!-- include libraries(jQuery, bootstrap) -->
-{{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script> --}}
 
-   {{-- //cke editor --}}
+<!-- Include Axios library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Include Axios library -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
       
  
@@ -64,16 +64,12 @@
                             </select>
                         </div>
                         <div class="col-lg-4">
-                              <select name="division_id"  value="{{ old('division_id') }}" class="form-select rounded-pill mb-3" aria-label="Default select example">
-                                <option disabled selected="">Select Division <strong class="text-danger">*</strong></option>
-
-                            @foreach ($division as $division)
-                            <option value="{{ $division->id }}">{{ $division->div_name }}</option>
-                            @endforeach
+                            <select id="divisionSelect" name="division_id" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                                <option selected>বিভাগ<strong class="text-danger">*</strong></option>
                             </select>
                             @error('division_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
-                             @enderror
+                            @enderror
                         </div>
                        </div>
                     </div>
@@ -95,28 +91,22 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="row">
-                            <div class="col-lg-6"> 
-                                 <select value="{{ old('district_id') }}" name="district_id" class="form-select rounded-pill mb-3" aria-label="Default select example">
-                                <option disabled selected="">Select District</option>
-                                @foreach ($district as $district)
-                                <option value="{{ $district->id }}">{{ $district->dist_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('district_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                           @enderror
-                        </div>
-                        <div class="col-lg-6">  
-                            <select name="upazila_id" value="{{ old('upazila_id') }}" class="form-select rounded-pill mb-3" aria-label="Default select example">
-                                <option disabled selected="">Select Upazila</option>
-                                @foreach ($upazila as $upazila)
-                                <option value="{{ $upazila->id }}">{{ $upazila->upazila_name}}</option>
-                                @endforeach
-                            </select>
-                            @error('upazila_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                           @enderror
-                        </div>
+                            <div class="col-lg-6">
+                                <select id="districtSelect" name="district_id" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                                    <option selected>জেলা</option>
+                                </select>
+                                @error('district_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <select id="upazilaSelect" name="upazila_id" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                                    <option selected>উপজেলা</option>
+                                </select>
+                                @error('upazila_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -205,7 +195,7 @@
                     <div class="col-lg-12">
                         <div class="live-preview">
                             <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="submit">Add News</button>
+                                <button class="btn btn-primary" type="submit" onclick="functionCheck()">Add News</button>
                             </div>
                         </div>
                     </div>
@@ -247,4 +237,88 @@
     }
 </style>
     {{-- @include('backend.component.createNews') --}}
+
+    <!-- Your JavaScript code -->
+    <script>
+        // Function to fetch divisions
+        function fetchDivisions() {
+            axios.get('/getDivision')
+                .then(function(response) {
+                    var divisions = response.data;
+                    console.log(divisions);
+                    var divisionSelect = $('#divisionSelect');
+                    divisionSelect.empty(); // Clear existing options
+                    divisionSelect.append('<option selected>বিভাগ</option>'); // Add default option
+                    $.each(divisions, function(index, division) {
+                        divisionSelect.append('<option value="' + division.id + '">' + division.div_name + '</option>');
+                    });
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
+        }
+    
+        // Function to fetch districts based on selected division
+        function fetchDistricts(divisionId) {
+            axios.get('/getDistrict', {
+                    params: {
+                        division_id: divisionId
+                    }
+                })
+                .then(function(response) {
+                    var districts = response.data;
+                    var districtSelect = $('#districtSelect');
+                    districtSelect.empty(); // Clear existing options
+                    districtSelect.append('<option selected>জেলা</option>'); // Add default option
+                    $.each(districts, function(index, district) {
+                        districtSelect.append('<option value="' + district.id + '">' + district.dist_name + '</option>');
+                    });
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
+        }
+    
+        // Function to fetch upazilas based on selected district
+        function fetchUpazilas(districtId) {
+            axios.get('/getUpazila', {
+                    params: {
+                        district_id: districtId
+                    }
+                })
+                .then(function(response) {
+                    var upazilas = response.data;
+                    var upazilaSelect = $('#upazilaSelect');
+                    upazilaSelect.empty(); // Clear existing options
+                    upazilaSelect.append('<option selected>উপজেলা</option>'); // Add default option
+                    $.each(upazilas, function(index, upazila) {
+                        upazilaSelect.append('<option value="' + upazila.id + '">' + upazila.upazila_name + '</option>');
+                    });
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
+        }
+    
+        // Call fetchDivisions function when the document is ready
+        $(document).ready(function() {
+            fetchDivisions();
+    
+            // Event listener for division select change
+            $('#divisionSelect').change(function() {
+                var divisionId = $(this).val();
+                if (divisionId != '') {
+                    fetchDistricts(divisionId);
+                }
+            });
+    
+            // Event listener for district select change
+            $('#districtSelect').change(function() {
+                var districtId = $(this).val();
+                if (districtId != '') {
+                    fetchUpazilas(districtId);
+                }
+            });
+        });
+    </script>
 @endsection

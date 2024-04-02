@@ -21,7 +21,8 @@ class Bengali
     // Times
     public static $en_times = array('am', 'pm');
     public static $en_times_uppercase = array('AM', 'PM');
-    public static $bn_times = array('পূর্বাহ্ন', 'অপরাহ্ন');
+    // public static $bn_times = array('পূর্বাহ্ন', 'অপরাহ্ন');
+    public static $bn_times = array('এএম', 'পিএম');
 
     // Method - English to Bengali Number
     public static function bn_number($number)

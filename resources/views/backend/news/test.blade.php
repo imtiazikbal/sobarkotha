@@ -1,64 +1,54 @@
-<div class="container">
-    <div class="row">
-        <a href="" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-12 col-xl-12 pb-3">
-                <div class="CategoryName">
-                    <h2>বাংলাদেশ<i class="bi bi-chevron-right"></i></h2>
-                </div>
-            </a>
-    </div>
 
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12 catBanSearchBox ">
-            <div class="row py-5">
-                <div class="col-md-3 search_title text-center">
-                    <h2>আমার এলাকার খবর</h2>
-                </div>
+<!-- Include Axios library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Include Axios library -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-                <div class="col-md-9">
-                    <div class="newsSearch">
-                        <form action="{{ route('bangladeshDistrictNews') }}" class="d-flex justify-content-between">
-                            <div class="py">
-                                <select id="divisionSelect" name="division" class="form-select bg-transparent" aria-label="Default select example">
-                                    <option selected>বিভাগ</option>
-                                </select>
-                            </div>
-                            <div class="py">
-                                <select id="districtSelect" name="district" class="form-select bg-transparent" aria-label="Default select example">
-                                    <option selected>জেলা</option>
-                                </select>
-                            </div>
-                            <div class="py">
-                                <select id="upazilaSelect" name="upazila" class="form-select bg-transparent" aria-label="Default select example">
-                                    <option selected>উপজেলা</option>
-                                </select>
-                            </div>
-                            <div class="">
-                                <button class="btn btn-primary" type="submit">Search</button>
-                            </div>
-                        </form>      
-                    </div>
+<div class="mt-20">
+    <div class="live-preview">
+        <form action="{{ url('/admin/store/news') }} " method="POST" enctype="multipart/form-data">
+            <div class="row g-3">
+                <!-- Other form elements -->
+                <!-- Division Select -->
+                <div class="col-lg-4">
+                    <select id="divisionSelect" name="division" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                        <option selected>বিভাগ<strong class="text-danger">*</strong></option>
+                    </select>
+                    @error('division_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+                <!-- District Select -->
+                <div class="col-lg-4">
+                    <select id="districtSelect" name="district" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                        <option selected>জেলা</option>
+                    </select>
+                    @error('district_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <!-- Upazila Select -->
+                <div class="col-lg-4">
+                    <select id="upazilaSelect" name="upazila" class="form-select rounded-pill mb-3" aria-label="Default select example">
+                        <option selected>উপজেলা</option>
+                    </select>
+                    @error('upazila_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <!-- Other form elements -->
             </div>
-            
-        </div>
-
-        
+        </form>
     </div>
-
-
-
-    <script>
-        async function myFunction() {
-            alert("Hello!");
-        }
-    </script>
+</div>
 
 <script>
     // Function to fetch divisions
     function fetchDivisions() {
-        axios.get('/api/getDivision')
+        axios.get('/getDivision')
             .then(function(response) {
                 var divisions = response.data;
+                console.log(divisions);
                 var divisionSelect = $('#divisionSelect');
                 divisionSelect.empty(); // Clear existing options
                 divisionSelect.append('<option selected>বিভাগ</option>'); // Add default option
@@ -73,7 +63,7 @@
 
     // Function to fetch districts based on selected division
     function fetchDistricts(divisionId) {
-        axios.get('api/getDistrict', {
+        axios.get('/getDistrict', {
                 params: {
                     division_id: divisionId
                 }
@@ -94,7 +84,7 @@
 
     // Function to fetch upazilas based on selected district
     function fetchUpazilas(districtId) {
-        axios.get('/api/getUpazila', {
+        axios.get('/getUpazila', {
                 params: {
                     district_id: districtId
                 }
@@ -135,12 +125,3 @@
     });
 </script>
 
-<style>
-    .bg-transparent {
-	background-color: transparent !important;
-	width: 100%;
-	text-align: center;
-    padding: 10px 0px 10px 0px;
-
-}
-</style>

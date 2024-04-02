@@ -135,16 +135,26 @@ Route::get('/search/news', [FontendController::class, 'searchNews'])->name('sear
 Route::post('/admin/leadNewsOrder/store', [NewsController::class, 'storeLeadNewsOreder'])->name('leadNewsStore');
 
 // get news by category
-Route::get('/admin/get-news-by-category', [FontendController::class, 'getNewsByCategory'])->name('newsByCategory');
+Route::get('/Ncat', [FontendController::class, 'getNewsByCategory'])->name('newsByCategory');
 
 
 // get news by title id
-Route::get('/admin/get-news-by-title', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
+Route::get('/Ntitle', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
 
 
 //news by trending
-Route::get('/get-news-by-topic', [FontendController::class, 'newsByTopic'])->name('newsByTopic');
+Route::get('/Ntopic', [FontendController::class, 'newsByTopic'])->name('newsByTopic');
 
 Route::get('/bangladesh/district-news', [FontendController::class, 'bangladeshDistrictNews'])->name('bangladeshDistrictNews');
+
+
+
+
+// Auth routes
+
+Route::get('/getDivision',[FontendController::class,'getDivision'])->name('getDivision');
+Route::get('/getDistrict',[FontendController::class,'getDistrictFromDivision'])->name('getDistrict');
+Route::get('/getUpazila',[FontendController::class,'getUpazila'])->name('getUpazila');
+
 
 require __DIR__.'/auth.php';

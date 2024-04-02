@@ -23,7 +23,7 @@
                   <div class="zoomImg" style="overflow: hidden;"> 
 
                     @if($news->image && file_exists(public_path($news->image)))
-                    <img src="{{ asset($news->image) }}" alt="News Image">
+                    <img src="{{ asset($news->image) }}" alt="News Image" width="100%">
                 @else
                     <img src="{{ asset('fontend/img/logomain.png') }}" width="100%" alt="Default Image">
                 @endif
@@ -39,7 +39,7 @@
                         </svg>
                       
                     </h5> --}}
-                    {!! Str::limit($news->nBody, 300) !!}
+                    {!! Str::limit($news->nBody, 500) !!}
                                       
                     {{-- {!! implode(' ', array_slice(explode(' ', $news->nBody), 0, 100)) !!} --}}
                     <div class="py-3 sharethis-inline-share-buttons"></div>
@@ -60,10 +60,10 @@
                 @foreach ($leadNews3 as $news )
                 <div class="col-sm-12 col-6 mb-3 px-2 px-sm-3">
                   <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
-                    <div class="zoomImg" style="overflow: hidden;">
+                    <div class="zoomImg" style="overflow:hidden;">
                        
                    @if(file_exists(public_path($news->image)))
-                      <img src="{{ asset($news->image) }}" alt="Your Image">
+                      <img src="{{ asset($news->image) }}" width="100%" alt="Your Image">
                   @else
                       <img src="{{asset('fontend/img/logomain.png') }}" alt="Default Image">
                   @endif
@@ -79,7 +79,7 @@
           </div>
         
           <div class="row">
-            @foreach ($skip1Get3 as $news )
+            @foreach ($skip4get6 as $news )
             <div class="col-sm-4 col-6 mb-3 px-sm-3">
               <a href="{{ route('newsByTitle',['news_id' => $news->id]) }}" class="text-decoration-none"> 
                 <div class="zoomImg" style="overflow: hidden;">

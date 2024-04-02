@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use App\Models\News;
-use App\Helper\Bengali;
-use App\Models\Category;
-use App\Models\Featured;
 use App\Models\Topic;
+use App\Helper\Bengali;
+use App\Models\Upazila;
+use App\Models\Category;
+use App\Models\District;
+use App\Models\Division;
+use App\Models\Featured;
 use Illuminate\Http\Request;
 
 class FontendController extends Controller
@@ -36,7 +39,7 @@ class FontendController extends Controller
     {
         //date and time here
         date_default_timezone_set('Asia/Dhaka');
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::orderBy('showtotop', 'ASC')->get();
@@ -53,7 +56,7 @@ class FontendController extends Controller
         $leadNews3 = News::where('status', 'published')->skip(1)->take(3)->get();
 
         // Main feartured skip 3 get 6 news
-       $skip1Get3 = News::with('category')->latest()->skip(6)->take(6)->get();
+       $skip4get6 = News::where('status', 'published')->skip(4)->take(6)->get();
         
 
         $trending = Topic::all();
@@ -89,9 +92,9 @@ class FontendController extends Controller
         // scroll news
         $scrollNews = News::where('scroll', '1')->where('status', 'published')->orderBy('id', 'desc')->get();
 
-        return view('fontend.home', compact('category', 'date', 'news', 'leadNews3', 'featured', 'trending', 'cBangladesh', 'cRajniti', 'cSaraDesh', 'cBangladeshSkip1Take3', 'cRajnitiSkip1Take3', 'cSaraDeshSkip1Take3', 'cSports1', 'cSports1SkipTake3', 'cSports2', 'sport2Old', 'skip1Get3', 'latest', 'scrollNews','ApnarJonno','sidebarCat'));
+        return view('fontend.home', compact('category', 'date', 'news', 'leadNews3', 'featured', 'trending', 'cBangladesh', 'cRajniti', 'cSaraDesh', 'cBangladeshSkip1Take3', 'cRajnitiSkip1Take3', 'cSaraDeshSkip1Take3', 'cSports1', 'cSports1SkipTake3', 'cSports2', 'sport2Old', 'skip4get6', 'latest', 'scrollNews','ApnarJonno','sidebarCat'));
 
-        //return $skip1Get3 ;
+ //  return $skip4get6 ;
         // return $leadNews3 ;
         // return  $featured;
         //return $cBangladeshSkip1Take3;
@@ -107,7 +110,7 @@ class FontendController extends Controller
         //Essential for all page here
 
         date_default_timezone_set('Asia/Dhaka');
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::orderBy('showtotop', 'ASC')->get();
@@ -141,7 +144,7 @@ class FontendController extends Controller
     function getNewsByTitle(Request $request, News $news)
     {
         date_default_timezone_set('Asia/Dhaka');
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::orderBy('showtotop', 'ASC')->get();
@@ -175,7 +178,7 @@ class FontendController extends Controller
 
     function newsByTopic(Request $request, Topic $topic)
     {
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::orderBy('showtotop', 'ASC')->get();
@@ -204,7 +207,7 @@ class FontendController extends Controller
         //Essential for all page here
 
         date_default_timezone_set('Asia/Dhaka');
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category = Category::orderBy('showtotop', 'ASC')->get();
@@ -225,7 +228,7 @@ class FontendController extends Controller
         //Essential for all page here
 
         date_default_timezone_set('Asia/Dhaka');
-        $dateNew = date('h:i A - d F Y');
+        $dateNew = date('l j F Y');
         $date = Bengali::bn_date_time($dateNew); // ১০ জানুয়ারি ২০২৫
         // all category here
         $category =Category::orderBy('showtotop', 'ASC')->get();
@@ -235,8 +238,32 @@ class FontendController extends Controller
 
         $scrollNews = News::where('scroll', true)->where('status', 'published')->get();
         $latest = News::where('status', 'published')->orderBy('id', 'desc')->first();
-
-        $news = News::Where('district_id', $request->district)->orWhere('division_id', $request->division)->orWhere('upazila_id', $request->upazila)->with('category','division','district','upazila','user')->where('status','published')->get();
-        return $news;
+        $division_id = $request->division;
+       // $news = News::Where('district_id', $request->district)->orWhere('division_id', $request->division)->orWhere('upazila_id', $request->upazila)->with('category','division','district','upazila','user')->where('status','published')->get();
+       $news = News::where('district_id', $request->district)->with('category','division','district','upazila','user')->where('status','published')->get();
+        
+      
+        return view('fontend.pages.amarKhabor', compact('category', 'date', 'news', 'featured', 'trending', 'scrollNews', 'latest','sidebarCat'));
+      // return $news;
       }
+
+
+      
+       // api 
+
+       function getDivision(Request $request){
+
+        $division = Division::all();
+        return response()->json($division);
+    }
+    function getDistrictFromDivision(Request $request, District $district){
+
+        $district = District::where('division_id',$request->division_id)->get();
+        return response()->json($district);
+    }
+    function getUpazila(Request $request, Upazila $upazila){
+
+        $upazila = Upazila::where('district_id',$request->district_id)->get();
+        return response()->json($upazila);
+    }
 }

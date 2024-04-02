@@ -3,9 +3,9 @@
         <div class="form-row">
             <div class="col pr-0">
         
-                <div class="" style="">ঢাকা,{{ $date }}
+                <div class="time" style="">
+                    <span>ঢাকা, {{ $date }}</span>
                 
-
                 </div>
                 <!--
                 <div>ঢাকা, > 

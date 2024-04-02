@@ -47,7 +47,8 @@ class NewsController extends Controller
         $featured = Featured::all();
         $topic = Topic::all();
         
-       return view('backend.news.create',compact('category','subcategory','division','district','upazila','featured','topic'));
+       //return view('backend.news.test',compact('category','subcategory','division','district','upazila','featured','topic'));
+      return view('backend.news.create',compact('category','subcategory','division','district','upazila','featured','topic'));
     }
 
     /**
@@ -55,7 +56,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+       // dd($request->all());
         $request->validate([
             'title'=>'required',
             'nBody'=>'required',
