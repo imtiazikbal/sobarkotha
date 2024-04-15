@@ -37,6 +37,12 @@
               </a>
               </li>
               @if (auth()->user()->role == 'admin')
+
+              <li>
+                <a class="nav-link menu-link" href="{{ route('role.index') }}" >
+                  <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Role</span>
+              </a>
+              </li>
               <li>
                 <a class="nav-link menu-link" href="{{url('/admin/category') }}" >
                   <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Category</span>

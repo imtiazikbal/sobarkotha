@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\FontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UpazilaController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\FeaturedController;
-use App\Http\Controllers\FontendController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\TopicController;
-use App\Http\Controllers\UpazilaController;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,15 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','adminCheck'])->group(function () {
    
+Route::get('/admin/role', [AdminController::class, 'index'])->name('role.index');
+Route::get('/admin/role/create', [AdminController::class, 'create'])->name('role.create');
+Route::post('/admin/role/store', [AdminController::class, 'store'])->name('role.store');
+Route::get('/admin/role/edit/{role}', [AdminController::class, 'edit'])->name('role.edit');
+Route::post('/admin/role/update/{role}', [AdminController::class, 'update'])->name('role.update');
+Route::post('/admin/role/destroy/{role}', [AdminController::class, 'destroy'])->name('role.destroy');
+
+
+
 // Category Route
 Route::get('/admin/category', [CategoryController::class, 'index']);
 Route::get('/admin/create/category', [CategoryController::class, 'create']);
